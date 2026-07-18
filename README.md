@@ -58,13 +58,3 @@ Open `index.html` in your browser, then either:
 2. Make sure the `sound/` folder with all `.mp3` files sits alongside `index.js`.
 3. Open `index.html` in any modern browser — no build step or server required.
 
-## Possible Improvements
-
-- Replace the `switch` statement with a lookup object (`{ w: "tom-1", a: "tom-2", ... }`) for cleaner, more scalable code.
-- Add error handling for unmapped keys instead of relying on the default no-op.
-- Guard `buttonAnimation()` against `null` when a pressed key has no matching `.pressed`-able element (e.g. pressing an unmapped key).
-- Add a `.pressed` CSS transition for smoother visual feedback.
-
-## License
-
-MIT — free to use and modify.
