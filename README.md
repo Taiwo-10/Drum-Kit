@@ -1,36 +1,70 @@
-# Drum-Kit
+# 🥁 JS Drum Kit
 
-Angela Yu Web Development - Advanced JS and DOM Manipulation
+A simple interactive drum kit built with vanilla JavaScript. Play drum sounds by clicking on-screen buttons or pressing keys on your keyboard.
 
+## Features
 
+- 🖱️ Click drum pad buttons to play sounds
+- ⌨️ Press keyboard keys to play the same sounds
+- ✨ Visual "pressed" animation feedback on each trigger
+- 🎧 Lightweight, no external libraries required
 
+## Demo
 
-HTML/CSS/JS & DOM - Drum Kit
-About this project
+Open `index.html` in your browser, then either:
+- Click any drum pad on the screen, **or**
+- Press one of the mapped keys on your keyboard
 
+## Key Mapping
 
-Features
+| Key | Sound         |
+|-----|---------------|
+| W   | Tom 1         |
+| A   | Tom 2         |
+| S   | Tom 3         |
+| D   | Tom 4         |
+| J   | Snare         |
+| K   | Crash         |
+| L   | Kick / Bass   |
 
+## Project Structure
 
-Requirements
+```
+├── index.html
+├── style.css
+├── index.js          # main logic (event listeners, sound + animation)
+└── sound/
+    ├── sounds_tom-1.mp3
+    ├── sounds_tom-2.mp3
+    ├── sounds_tom-3.mp3
+    ├── sounds_tom-4.mp3
+    ├── sounds_snare.mp3
+    ├── sounds_crash.mp3
+    └── sounds_kick-bass.mp3
+```
 
+> **Note:** Each drum pad button and its keyboard key should share the same class/key name (e.g. a button with class `w` matches the `"w"` keypress) so `buttonAnimation()` can correctly select and animate it.
 
+## How It Works
 
-In this code along I updated the provided starter files using HTML, CSS, and Javascript
+- **Click events:** Every element with the `.drum` class gets a `click` listener attached in a loop. On click, the button's inner text (e.g. `"w"`) is used to determine which sound to play.
+- **Keyboard events:** A single `keypress` listener on `document` reads `event.key` and passes it to the same `makeSound()` and `buttonAnimation()` functions.
+- **`makeSound(key)`:** Uses a `switch` statement to map a key to an `Audio` object and play it.
+- **`buttonAnimation(key)`:** Adds a `pressed` CSS class to the matching element, then removes it after 100ms to create a brief flash/press effect.
 
+## Setup
 
-Features
+1. Clone or download this repository.
+2. Make sure the `sound/` folder with all `.mp3` files sits alongside `index.js`.
+3. Open `index.html` in any modern browser — no build step or server required.
 
+## Possible Improvements
 
+- Replace the `switch` statement with a lookup object (`{ w: "tom-1", a: "tom-2", ... }`) for cleaner, more scalable code.
+- Add error handling for unmapped keys instead of relying on the default no-op.
+- Guard `buttonAnimation()` against `null` when a pressed key has no matching `.pressed`-able element (e.g. pressing an unmapped key).
+- Add a `.pressed` CSS transition for smoother visual feedback.
 
- HTML
- CSS
- Javascript
+## License
 
-Requirements
-
-
-
-HTML
-CSS
-Javascript
+MIT — free to use and modify.
